@@ -1,7 +1,11 @@
 <x-guest-layout>
+
     <x-jet-authentication-card>
-        <x-slot name="logo">
+        <x-slot name="logo" >
+        <div class="text-center d-flex flex-column justify-content-center align-items-center"">
             <x-jet-authentication-card-logo />
+         <span class="text-primary">Stock Manager</span>
+         </div>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -31,8 +35,9 @@
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             </div>
-
+            
             <div class="flex items-center justify-end mt-4">
+          
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
@@ -42,7 +47,13 @@
                 <x-jet-button class="ml-4">
                     {{ __('Login') }}
                 </x-jet-button>
+              
             </div>
         </form>
+        
+        <a href="{{route('register')}}" class="text-primary ">
+                    {{ __('Create Account') }}
+                    </a>
+                   
     </x-jet-authentication-card>
 </x-guest-layout>

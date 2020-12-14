@@ -25,7 +25,7 @@
                <ul class="navbar-nav ml-auto mt-2 mt-lg-0 ">
                    <li class="nav-item {{ \Request::path()== 'home' ? 'active' : ' ' }}" >
 {{--                       {{dd(\Request::path())}}--}}
-                       <a class="nav-link" href="{{route('sm.home.index')}}">Home </a>
+                       <a class="nav-link" href="{{route('sm.home.index')}}">Items</a>
                    </li>
                    <li class="nav-item  {{ \Request::path()=='brands' ?'active':'' }}">
                        <a class="nav-link" href="{{route('sm.brands.index')}}">Brands</a>

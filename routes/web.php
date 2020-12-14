@@ -16,9 +16,7 @@ use App\Http\Controllers\modalController;
 |
 */
 
-Route::get('/', function () {
-    return view('auth/login');
-});
+Route::get('/',[App\Http\Controllers\itemController::class,'index']);
 
 Route::middleware(['auth:sanctum', 'verified'])->name('sm.')->group(function () {
     Route::resource('/home', itemController::class);

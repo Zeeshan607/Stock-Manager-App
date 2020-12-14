@@ -6,6 +6,7 @@ use App\Models\brand;
 use App\Models\item;
 use App\Models\modal;
 use Database\Seeders\ItemsTableSeeder;
+use App\Http\Requests\ItemsRequest;
 use Illuminate\Http\Request;
 
 class itemController extends Controller
@@ -47,22 +48,13 @@ class itemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemsRequest $request)
     {
         //validating items
-        $request->validate([
-            'itemName'=>'required',
-            "itemAmount"=>'required',
-            'brand_id'=>'required',
-            'modal_id'=>'required'
-
-        ]);
+     
 //        initiating new instance of item class and saving values in it
         $item=new item;
-        $item->name=$request->itemName;
-        $item->amount=$request->itemAmount;
-        $item->brand_id=$request->brand_id;
-        $item->modal_id=$request->modal_id;
+        $item->fill($request->validated());
         $item->save();
 //        redirecting to home route
         return redirect()->route('sm.home.index')->with('msg','new item stored successfully');
@@ -97,24 +89,15 @@ class itemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ItemsRequest $request, $id)
     {
         //
         //validating items
-        $request->validate([
-            'itemName'=>'required',
-            "itemAmount"=>'required',
-            'brand_id'=>'required',
-            'modal_id'=>'required'
-
-        ]);
+     
 // updating items by specific id
         $item=item::find($id);
-        $item->name=$request->itemName;
-        $item->amount=$request->itemAmount;
-        $item->brand_id=$request->brand_id;
-        $item->modal_id=$request->modal_id;
-        $item->update();
+        $item->fill($request->validated());
+        $item->save();
 
         return redirect()->route('sm.home.index')->with('msg','new item updated successfully');
     }
