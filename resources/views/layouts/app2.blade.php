@@ -12,8 +12,6 @@
 
     </head>
    <body>
-
-
    <main>
        <div class="container-xl">
        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -24,7 +22,7 @@
                <a class="navbar-brand" href="#">Stock Manager</a>
                <ul class="navbar-nav ml-auto mt-2 mt-lg-0 ">
                    <li class="nav-item {{ \Request::path()== 'home' ? 'active' : ' ' }}" >
-{{--                       {{dd(\Request::path())}}--}}
+
                        <a class="nav-link" href="{{route('sm.home.index')}}">Items</a>
                    </li>
                    <li class="nav-item  {{ \Request::path()=='brands' ?'active':'' }}">
